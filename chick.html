@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birthday Card</title>
+  <style>
+    body {
+      background-image: url('https://www.creativefabrica.com/wp-content/uploads/2021/01/28/Colorful-Watercolor-Background-Graphics-8158369-1-1-580x348.jpg'); 
+      background-color: #fbdcdc;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0;
+      height: 100vh;
+    }
+
+    .page-wrapper {
+      height: 100%;
+      box-sizing: border-box;
+      border: 10px inset #1d5e86;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .baby-chick {
+      position: absolute;
+      bottom: 30px;
+      left: 1400px;
+      width: 350px;
+      z-index: 999;
+      animation: chick-bounce-walk 5s ease-in-out forwards;
+      filter: drop-shadow(0 20px 10px rgba(0, 0, 0, 0.3));
+    }
+
+    .pic1 {
+      position: absolute;
+      bottom: 30px;
+      left: 100px;
+      width: 350px;
+      z-index: 999;
+    }
+
+    @keyframes chick-bounce-walk {
+      0% {
+        left: -200px;
+        transform: translateY(0px) scaleX(1);
+      }
+      10% {
+        transform: translateY(-10px) scaleX(1.05);
+      }
+      20% {
+        left: 10%;
+        transform: translateY(0px) scaleX(1);
+      }
+      30% {
+        transform: translateY(-10px) scaleX(1.05);
+      }
+      40% {
+        left: 25%;
+        transform: translateY(0px) scaleX(1);
+      }
+      50% {
+        transform: translateY(-10px) scaleX(1.05);
+      }
+      60% {
+        left: 40%;
+        transform: translateY(0px) scaleX(1);
+      }
+      70% {
+        transform: translateY(-10px) scaleX(1.05);
+      }
+      80% {
+        left: 50%;
+        transform: translateY(0px) scaleX(1);
+      }
+      90% {
+        transform: translateY(-10px) scaleX(1.05);
+      }
+      100% {
+        left: 63%;
+        transform: translateY(0px) scaleX(1);
+      }
+    }
+
+    .speech-bubble {
+      position: absolute;
+      bottom: 320px;
+      left: 65%;
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px 15px;
+      font-family: 'Nobile', sans-serif;
+      font-size: 1em;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 998;
+      display: none;
+    }
+
+    .speech-bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      left: 40px;
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-top-color: #fff;
+    }
+
+    .birthday-card {
+      position: relative;
+      width: 300px;
+      height: 395px;
+      border: 10px solid #2375a8;
+      margin: 60px auto 0 auto;
+      box-shadow: inset 10px 0px 15px 0px rgba(0, 0, 0, 0.1);
+      background-image: linear-gradient(to bottom, white, rgba(255, 255, 255, 0.5)),
+        url("https://images.unsplash.com/photo-1527481138388-31827a7c94d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXxBT3o0SFFDbVdEa3x8ZW58MHx8fHw%3D&w=1000&q=80");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .birthday-card .text {
+      width: 80%;
+      height: 80%;
+      margin: auto;
+      font-family: 'Nobile', sans-serif;
+    }
+
+    .birthday-card .text > p {
+      font-size: 1.1em;
+      color: #331717;
+      line-height: 1.4;
+      font-style: italic;
+      text-align: center;
+      margin: 30px auto 0 auto;
+    }
+
+    .birthday-card .text .title {
+      font-size: 1.5em;
+      margin: 60px auto 60px auto;
+    }
+
+    .birthday-card .cover-outer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      margin: -10px 0 0 -10px;
+      border: 10px solid #1d5e86;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      transform-origin: 0% 50%;
+      transform: perspective(800px) rotateY(0deg);
+      transition: all 0.8s ease-in-out;
+    }
+
+    .birthday-card .cover-outer img {
+      box-shadow: 0px 6px 11px 7px rgba(0, 0, 0, 0.22);
+      border-radius: 5px;
+    }
+
+    .birthday-card .cover-inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 10px solid #1d5e86;
+      background-color: #1d5e86;
+      margin: -10px 0px 0 -10px;
+      backface-visibility: visible;
+      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+      transform-style: preserve-3d;
+      transform-origin: 0% 50%;
+      transform: perspective(800px) rotateY(0deg);
+      transition: all 0.8s ease-in-out;
+      overflow: hidden;
+    }
+
+    .birthday-card .cover-inner img {
+      transform: rotateY(170deg);
+    }
+
+    .birthday-card:hover .cover-outer {
+      transform: perspective(800px) rotateY(-170deg);
+    }
+
+    .birthday-card:hover .cover-inner {
+      transform: perspective(800px) rotateY(-170deg);
+      box-shadow: 7px 0 5px 0 rgba(0, 0, 0, 0.3), inset 2px 0px 15px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Confetti Button */
+    .confetti-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: #1d5e86;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <!-- Confetti Button -->
+    <button class="confetti-button" onclick="fireConfetti()">🎉 Click for Confetti!</button>
+
+    <!-- Bouncing Chick -->
+    <img src="https://png.pngtree.com/png-clipart/20250418/original/pngtree-cute-baby-chick-drawing-png-image_20721878.png" class="baby-chick" id="chick" />
+    <div class="speech-bubble" id="bubble">Hover over the card to open it! 🐥🎁</div>
+
+    <!-- Birthday Card -->
+    <div class="birthday-card">
+      <!-- Inner -->
+      <div class="cover-inner">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5n439L9Qd0vjVe_SJd2TteNwCAIRTXqkJXUbw6jORxlq7S1XO7NLzPRUi-RSiA3suzW8&usqp=CAU" width="100%">
+        <img src="c201a213-ff26-48f1-8562-8d861600cffe.JPG" alt="Inside Cover Image"
+             style="position: absolute; top: 0px; left: 0px; width: 300px; transform: rotateY(170deg); border-radius: 10px;" />
+      </div>
+
+      <!-- Outer -->
+      <div class="cover-outer">
+        <img src="https://images.esellerpro.com/3274/I/318/37/lrgscaleAO002.jpg" width="100%">
+      </div>
+
+      <!-- Text -->
+      <div class="text">
+        <p class="title">Happy Birthday <br> Saga!</p>
+        <p>
+          I hope you have a great 17th, even though it is a 
+          busy time rn. Good luck with your exams and find 
+          time to celebrate too! Stay healthy, and look forward to my
+          real present when I come back *wink wink*
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    function fireConfetti() {
+      const duration = 3 * 1000;
+      const end = Date.now() + duration;
+
+      (function frame() {
+        confetti({
+          particleCount: 5,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+        });
+        confetti({
+          particleCount: 5,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+        });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      })();
+    }
+
+    // Show speech bubble after delay
+    setTimeout(() => {
+      document.getElementById('bubble').style.display = 'block';
+    }, 5000);
+  </script>
+
+</body>
+</html>
